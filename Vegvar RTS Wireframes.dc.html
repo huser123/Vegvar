@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&display=swap"><style>body{margin:0;background:#f0eee9;font-family:'Patrick Hand',system-ui,sans-serif;color:#2b2b2b}a{color:#2b2b2b}a:hover{color:oklch(0.5 0.13 40)}.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}.dv-opts{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}.dv-card{max-width:100%;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}.dv-next{margin:22px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5)}</style></helmet>
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">VÉGVÁR — koncepció, 4 HUD-irány, motívumlap, főmenü</span></div>
+
+<div style="display:flex;flex-wrap:wrap;gap:36px;max-width:1500px;margin:0 0 32px;padding:22px 26px;background:#fbfaf6;border:2px solid #2b2b2b;border-radius:8px 16px 10px 14px">
+  <div style="flex:1 1 300px;min-width:0">
+    <div style="font:700 44px/1 'Caveat',cursive">Végvár</div>
+    <div style="font-size:18px;margin-top:6px">Valós idejű stratégia a magyar végvidéken, 1552–1686. Izometrikus 2D, kézzel festett sprite-ok, 800×600-as korszak hangulata.</div>
+    <div style="font:500 20px 'Caveat',cursive;color:oklch(0.5 0.13 40);margin-top:10px">Ami új: az évszak a harmadik játékos.</div>
+  </div>
+  <div style="flex:1 1 260px;min-width:0;font-size:16px;line-height:1.45">
+    <div style="font:700 22px 'Caveat',cursive">Évszak-kör (kb. 8 perc)</div>
+    <div style="display:flex;flex-direction:column;gap:2px">
+      <div><b>Tavasz</b> — árad a folyó, a mocsár nő, utak elázva</div>
+      <div><b>Nyár</b> — hadjárat: gyors mozgás, ostrom</div>
+      <div><b>Ősz</b> — betakarítás és zsoldfizetés</div>
+      <div><b>Tél</b> — a folyó befagy és járható, éhség</div>
+    </div>
+  </div>
+  <div style="flex:1 1 220px;min-width:0;font-size:16px;line-height:1.45">
+    <div style="font:700 22px 'Caveat',cursive">Nyersanyag</div>
+    <div>Élelem · Fa · Kő · Zsold</div>
+    <div style="margin-top:4px">Ősszel minden katona zsoldot kér. Ha nincs, a zsoldos átáll, a végvári hazamegy aratni.</div>
+  </div>
+  <div style="flex:1 1 240px;min-width:0;font-size:16px;line-height:1.45">
+    <div style="font:700 22px 'Caveat',cursive">Három fél</div>
+    <div style="display:flex;flex-direction:column;gap:2px">
+      <div><b>Végváriak</b> — olcsó palánk, huszár, portya</div>
+      <div><b>Oszmán had</b> — nagy sereg, ágyú, csak nyáron erős</div>
+      <div><b>Császáriak</b> — drága zsoldos, kőbástya, lassú</div>
+    </div>
+  </div>
+</div>
+
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a"><div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Alsó sáv — klasszikus középkori RTS-elrendezés, évszak-tárcsával</div>
+<div class="dv-card" style="width:720px"><div style="height:540px;display:flex;flex-direction:column;background:#fbfaf6;font-size:14px">
+  <div style="display:flex;align-items:center;gap:14px;padding:5px 10px;border-bottom:2px solid #2b2b2b">
+    <div style="display:flex;gap:12px"><span>◇ Élelem 420</span><span>◇ Fa 310</span><span>◇ Kő 120</span><span style="color:oklch(0.5 0.13 40)">◇ Zsold 85</span></div>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:8px"><span>Nép 34/50</span>
+      <div style="display:flex;border:1.5px solid #2b2b2b;border-radius:10px;overflow:hidden;font-size:12px"><span style="padding:1px 7px">Tav</span><span style="padding:1px 7px;background:#2b2b2b;color:#fbfaf6">Nyár 2:10</span><span style="padding:1px 7px">Ősz</span><span style="padding:1px 7px">Tél</span></div>
+      <span style="border:1.5px solid #2b2b2b;border-radius:4px;padding:0 8px">Menü</span></div>
+  </div>
+  <div style="position:relative;flex:1;overflow:hidden;background:repeating-linear-gradient(26.57deg,transparent 0 27px,rgba(43,43,43,.09) 27px 28px),repeating-linear-gradient(-26.57deg,transparent 0 27px,rgba(43,43,43,.09) 27px 28px),#f6f3ea">
+    <div style="position:absolute;left:-60px;top:150px;width:900px;height:50px;background:oklch(0.92 0.04 240);border:2px solid oklch(0.6 0.13 240);border-radius:50%;transform:rotate(-17deg)"></div>
+    <div style="position:absolute;left:300px;top:128px;font:500 17px 'Caveat',cursive;color:oklch(0.45 0.13 240);transform:rotate(-17deg)">folyó — télen befagy</div>
+    <div style="position:absolute;left:420px;top:200px;width:170px;height:70px;border:2px dashed oklch(0.6 0.13 240);border-radius:50%"></div>
+    <div style="position:absolute;left:455px;top:224px;font:500 16px 'Caveat',cursive;color:oklch(0.45 0.13 240)">mocsár (tavasszal nő)</div>
+    <div style="position:absolute;left:90px;top:210px;width:90px;height:90px;border:2.5px solid #2b2b2b;background:#fff;transform:scaleY(.5) rotate(45deg)"></div>
+    <div style="position:absolute;left:112px;top:246px;font-size:14px">végvár</div>
+    <div style="position:absolute;left:215px;top:285px;width:44px;height:30px;border:2px solid #2b2b2b;background:#fff;font-size:11px;text-align:center;line-height:28px">malom</div>
+    <div style="position:absolute;left:40px;top:300px;width:58px;height:30px;border:2px solid #2b2b2b;background:#fff;font-size:11px;text-align:center;line-height:28px">kaszárnya</div>
+    <div style="position:absolute;left:285px;top:215px;width:110px;height:62px;border:1.5px dashed oklch(0.55 0.13 145)"></div>
+    <div style="position:absolute;left:298px;top:232px;width:16px;height:9px;border:2px solid oklch(0.55 0.13 145);border-radius:50%"></div>
+    <div style="position:absolute;left:326px;top:246px;width:16px;height:9px;border:2px solid oklch(0.55 0.13 145);border-radius:50%"></div>
+    <div style="position:absolute;left:356px;top:230px;width:16px;height:9px;border:2px solid oklch(0.55 0.13 145);border-radius:50%"></div>
+    <div style="position:absolute;left:340px;top:256px;width:16px;height:9px;border:2px solid oklch(0.55 0.13 145);border-radius:50%"></div>
+    <div style="position:absolute;left:590px;top:70px;width:10px;height:10px;border-radius:50%;background:oklch(0.6 0.13 40)"></div>
+    <div style="position:absolute;left:610px;top:82px;width:10px;height:10px;border-radius:50%;background:oklch(0.6 0.13 40)"></div>
+    <div style="position:absolute;left:600px;top:98px;width:10px;height:10px;border-radius:50%;background:oklch(0.6 0.13 40)"></div>
+    <div style="position:absolute;left:628px;top:66px;font:500 16px 'Caveat',cursive;color:oklch(0.5 0.13 40)">török portya</div>
+    <div style="position:absolute;right:0;top:0;width:150px;height:46px;background:repeating-linear-gradient(45deg,rgba(43,43,43,.25) 0 2px,transparent 2px 7px);border-left:1.5px solid #2b2b2b;border-bottom:1.5px solid #2b2b2b;font-size:12px;text-align:center;line-height:44px">felderítetlen</div>
+  </div>
+  <div style="display:flex;height:132px;border-top:2px solid #2b2b2b">
+    <div style="width:190px;padding:8px;border-right:2px solid #2b2b2b;display:grid;grid-template-columns:repeat(4,1fr);gap:5px;font-size:11px;align-content:start">
+      <div style="height:32px;border:1.5px solid #2b2b2b;border-radius:4px 7px 5px 6px;display:flex;align-items:center;justify-content:center">Megy</div>
+      <div style="height:32px;border:1.5px solid #2b2b2b;border-radius:4px 7px 5px 6px;display:flex;align-items:center;justify-content:center">Támad</div>
+      <div style="height:32px;border:1.5px solid #2b2b2b;border-radius:4px 7px 5px 6px;display:flex;align-items:center;justify-content:center">Őrjár</div>
+      <div style="height:32px;border:1.5px solid #2b2b2b;border-radius:4px 7px 5px 6px;display:flex;align-items:center;justify-content:center">Állj</div>
+      <div style="height:32px;border:1.5px solid #2b2b2b;border-radius:4px 7px 5px 6px;display:flex;align-items:center;justify-content:center">Ék</div>
+      <div style="height:32px;border:1.5px solid #2b2b2b;border-radius:4px 7px 5px 6px;display:flex;align-items:center;justify-content:center">Vonal</div>
+      <div style="height:32px;border:1.5px solid oklch(0.6 0.13 40);color:oklch(0.5 0.13 40);border-radius:4px 7px 5px 6px;display:flex;align-items:center;justify-content:center">Portya</div>
+      <div style="height:32px;border:1.5px dashed #2b2b2b;border-radius:4px 7px 5px 6px"></div>
+      <div style="grid-column:1/-1;font:500 16px 'Caveat',cursive;color:oklch(0.5 0.13 40)">↑ parancsok, 4×3 rács</div>
+    </div>
+    <div style="flex:1;min-width:0;padding:8px 10px;display:flex;gap:10px">
+      <div style="width:70px;height:84px;border:2px solid #2b2b2b;background:repeating-linear-gradient(135deg,rgba(43,43,43,.12) 0 2px,transparent 2px 8px);font:10px ui-monospace,monospace;display:flex;align-items:center;justify-content:center;text-align:center">egység-<br>portré</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:18px">Huszár ×4</div>
+        <div style="height:8px;border:1.5px solid #2b2b2b;margin:4px 0;width:140px"><div style="width:78%;height:100%;background:oklch(0.6 0.13 145)"></div></div>
+        <div style="font-size:13px">Tám 9 · Véd 3 · Seb 1.6</div>
+        <div style="font-size:13px;color:oklch(0.5 0.13 40)">Zsold: 4 / ősz · mocsárban lassul</div>
+        <div style="display:flex;gap:4px;margin-top:6px"><div style="width:22px;height:22px;border:1.5px solid #2b2b2b"></div><div style="width:22px;height:22px;border:1.5px solid #2b2b2b"></div><div style="width:22px;height:22px;border:1.5px solid #2b2b2b"></div><div style="width:22px;height:22px;border:1.5px solid #2b2b2b"></div></div>
+      </div>
+    </div>
+    <div style="width:170px;border-left:2px solid #2b2b2b;display:flex;align-items:center;justify-content:center;position:relative">
+      <div style="width:104px;height:104px;border:2px solid #2b2b2b;transform:scaleY(.6) rotate(45deg);background:linear-gradient(115deg,transparent 46%,oklch(0.75 0.1 240) 46% 54%,transparent 54%)"></div>
+      <div style="position:absolute;bottom:4px;font-size:12px">térkép</div>
+    </div>
+  </div>
+</div></div></div>
+
+<div class="dv-opt" id="1b"><div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Oldalsáv — építés a térképtől függetlenül, sorban gyártva</div>
+<div class="dv-card" style="width:720px"><div style="height:540px;display:flex;background:#fbfaf6;font-size:14px">
+  <div style="position:relative;flex:1;overflow:hidden;background:repeating-linear-gradient(26.57deg,transparent 0 27px,rgba(43,43,43,.09) 27px 28px),repeating-linear-gradient(-26.57deg,transparent 0 27px,rgba(43,43,43,.09) 27px 28px),#f6f3ea">
+    <div style="position:absolute;left:8px;top:8px;display:flex;gap:10px;padding:3px 10px;background:#fbfaf6;border:1.5px solid #2b2b2b;border-radius:5px 9px 6px 8px"><span>Élelem 420</span><span>Fa 310</span><span>Kő 120</span><span>Nép 34/50</span></div>
+    <div style="position:absolute;left:-60px;top:230px;width:760px;height:50px;background:oklch(0.92 0.04 240);border:2px solid oklch(0.6 0.13 240);border-radius:50%;transform:rotate(-17deg)"></div>
+    <div style="position:absolute;left:80px;top:300px;width:90px;height:90px;border:2.5px solid #2b2b2b;background:#fff;transform:scaleY(.5) rotate(45deg)"></div>
+    <div style="position:absolute;left:102px;top:336px;font-size:14px">végvár</div>
+    <div style="position:absolute;left:210px;top:330px;width:80px;height:80px;border:2px dashed oklch(0.55 0.13 145);background:oklch(0.95 0.04 145);transform:scaleY(.5) rotate(45deg)"></div>
+    <div style="position:absolute;left:215px;top:398px;font:500 17px 'Caveat',cursive;color:oklch(0.42 0.13 145)">kész épület lehelyezése: zöld = szabad</div>
+    <div style="position:absolute;left:330px;top:130px;width:14px;height:8px;border:2px solid oklch(0.55 0.13 145);border-radius:50%"></div>
+    <div style="position:absolute;left:356px;top:142px;width:14px;height:8px;border:2px solid oklch(0.55 0.13 145);border-radius:50%"></div>
+    <div style="position:absolute;left:380px;top:126px;width:14px;height:8px;border:2px solid oklch(0.55 0.13 145);border-radius:50%"></div>
+    <div style="position:absolute;left:300px;top:150px;display:flex;gap:4px;padding:3px;background:#fbfaf6;border:1.5px solid #2b2b2b;border-radius:5px;font-size:11px;margin-top:14px"><span style="padding:0 5px;border:1px solid #2b2b2b">Ék</span><span style="padding:0 5px;border:1px solid #2b2b2b">Vonal</span><span style="padding:0 5px;border:1px solid #2b2b2b">Portya</span></div>
+    <div style="position:absolute;left:300px;top:196px;font:500 16px 'Caveat',cursive;color:oklch(0.5 0.13 40)">↑ egységparancs a kijelölés alatt lebeg</div>
+    <div style="position:absolute;left:440px;top:60px;width:10px;height:10px;border-radius:50%;background:oklch(0.6 0.13 40)"></div>
+    <div style="position:absolute;left:458px;top:74px;width:10px;height:10px;border-radius:50%;background:oklch(0.6 0.13 40)"></div>
+    <div style="position:absolute;left:0;bottom:0;right:0;padding:3px 10px;border-top:1.5px solid #2b2b2b;background:#fbfaf6;font-size:13px">„Kapitány uram, a zsold három hét múlva esedékes.”</div>
+  </div>
+  <div style="width:188px;border-left:2px solid #2b2b2b;display:flex;flex-direction:column">
+    <div style="height:120px;margin:8px;border:2px solid #2b2b2b;background:linear-gradient(160deg,transparent 52%,oklch(0.75 0.1 240) 52% 60%,transparent 60%);display:flex;align-items:flex-end;justify-content:center;font-size:12px">térkép</div>
+    <div style="margin:0 8px;padding:2px 8px;border:2px solid oklch(0.6 0.13 40);color:oklch(0.45 0.13 40);display:flex;justify-content:space-between;font-size:17px"><span>Zsold</span><span>85</span></div>
+    <div style="margin:6px 8px 0;height:10px;border:1.5px solid #2b2b2b;display:flex"><div style="flex:1;border-right:1px solid #2b2b2b"></div><div style="flex:1;background:#2b2b2b"></div><div style="flex:1;border-right:1px solid #2b2b2b"></div><div style="flex:1"></div></div>
+    <div style="margin:0 8px;font-size:11px;display:flex;justify-content:space-between"><span>tav</span><span>NYÁR</span><span>ősz</span><span>tél</span></div>
+    <div style="display:flex;margin:6px 8px 0;font-size:12px;border-bottom:2px solid #2b2b2b"><span style="padding:1px 6px;background:#2b2b2b;color:#fbfaf6">Épület</span><span style="padding:1px 6px">Gyalog</span><span style="padding:1px 6px">Lovas</span><span style="padding:1px 6px">Ostrom</span></div>
+    <div style="flex:1;margin:6px 8px;display:grid;grid-template-columns:1fr 1fr;gap:5px;font-size:11px;align-content:start">
+      <div style="height:48px;border:1.5px solid #2b2b2b;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(0deg,oklch(0.9 0.06 145) 65%,transparent 65%)">Palánk 65%</div>
+      <div style="height:48px;border:2px solid oklch(0.55 0.13 145);display:flex;align-items:flex-end;justify-content:center;color:oklch(0.42 0.13 145)">Malom — KÉSZ</div>
+      <div style="height:48px;border:1.5px solid #2b2b2b;display:flex;align-items:flex-end;justify-content:center">Kaszárnya</div>
+      <div style="height:48px;border:1.5px solid #2b2b2b;display:flex;align-items:flex-end;justify-content:center">Istálló</div>
+      <div style="height:48px;border:1.5px solid #2b2b2b;display:flex;align-items:flex-end;justify-content:center">Őrtorony</div>
+      <div style="height:48px;border:1.5px dashed #2b2b2b;display:flex;align-items:flex-end;justify-content:center;opacity:.55">Bástya (kő!)</div>
+    </div>
+    <div style="margin:0 8px 8px;display:flex;gap:5px;font-size:12px"><span style="flex:1;text-align:center;border:1.5px solid #2b2b2b">Javít</span><span style="flex:1;text-align:center;border:1.5px solid #2b2b2b">Bont</span><span style="flex:1;text-align:center;border:1.5px solid #2b2b2b">Menü</span></div>
+  </div>
+</div></div></div>
+
+<div class="dv-opt" id="1c"><div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Keret nélkül — teljes képernyős térkép, sarkokban lebegő elemek, körmenü</div>
+<div class="dv-card" style="width:720px"><div style="position:relative;height:540px;overflow:hidden;font-size:14px;background:repeating-linear-gradient(26.57deg,transparent 0 27px,rgba(43,43,43,.09) 27px 28px),repeating-linear-gradient(-26.57deg,transparent 0 27px,rgba(43,43,43,.09) 27px 28px),#f6f3ea">
+  <div style="position:absolute;left:-60px;top:250px;width:900px;height:50px;background:oklch(0.92 0.04 240);border:2px solid oklch(0.6 0.13 240);border-radius:50%;transform:rotate(-17deg)"></div>
+  <div style="position:absolute;left:90px;top:330px;width:90px;height:90px;border:2.5px solid #2b2b2b;background:#fff;transform:scaleY(.5) rotate(45deg)"></div>
+  <div style="position:absolute;left:112px;top:366px;font-size:14px">végvár</div>
+  <div style="position:absolute;left:500px;top:300px;width:170px;height:70px;border:2px dashed oklch(0.6 0.13 240);border-radius:50%"></div>
+  <div style="position:absolute;left:548px;top:324px;font:500 16px 'Caveat',cursive;color:oklch(0.45 0.13 240)">mocsár</div>
+  <div style="position:absolute;left:300px;top:8px;display:flex;align-items:center;gap:10px">
+    <div style="display:flex;gap:10px;padding:2px 10px;background:#fbfaf6;border:1.5px solid #2b2b2b;border-radius:12px"><span>Élelem 420</span><span>Fa 310</span></div>
+    <div style="width:54px;height:54px;border-radius:50%;border:2px solid #2b2b2b;background:conic-gradient(#fbfaf6 0 25%,#2b2b2b 25% 50%,#fbfaf6 50% 100%);display:flex;align-items:center;justify-content:center"><div style="width:30px;height:30px;border-radius:50%;background:#fbfaf6;border:1.5px solid #2b2b2b;font-size:10px;display:flex;align-items:center;justify-content:center">nyár</div></div>
+    <div style="display:flex;gap:10px;padding:2px 10px;background:#fbfaf6;border:1.5px solid #2b2b2b;border-radius:12px"><span>Kő 120</span><span style="color:oklch(0.5 0.13 40)">Zsold 85</span></div>
+  </div>
+  <div style="position:absolute;left:250px;top:70px;font:500 17px 'Caveat',cursive;color:oklch(0.5 0.13 40)">évszak-gyűrű középen: az óra a legfontosabb adat ↑</div>
+  <div style="position:absolute;left:330px;top:160px;width:110px;height:110px;border:1.5px dashed #2b2b2b;border-radius:50%"></div>
+  <div style="position:absolute;left:376px;top:210px;width:18px;height:10px;border:2px solid oklch(0.55 0.13 145);border-radius:50%"></div>
+  <div style="position:absolute;left:368px;top:142px;width:34px;height:34px;border-radius:50%;border:1.5px solid #2b2b2b;background:#fbfaf6;font-size:10px;display:flex;align-items:center;justify-content:center">Támad</div>
+  <div style="position:absolute;left:426px;top:176px;width:34px;height:34px;border-radius:50%;border:1.5px solid #2b2b2b;background:#fbfaf6;font-size:10px;display:flex;align-items:center;justify-content:center">Őrjár</div>
+  <div style="position:absolute;left:426px;top:232px;width:34px;height:34px;border-radius:50%;border:1.5px solid oklch(0.6 0.13 40);color:oklch(0.5 0.13 40);background:#fbfaf6;font-size:10px;display:flex;align-items:center;justify-content:center">Portya</div>
+  <div style="position:absolute;left:368px;top:256px;width:34px;height:34px;border-radius:50%;border:1.5px solid #2b2b2b;background:#fbfaf6;font-size:10px;display:flex;align-items:center;justify-content:center">Állj</div>
+  <div style="position:absolute;left:310px;top:232px;width:34px;height:34px;border-radius:50%;border:1.5px solid #2b2b2b;background:#fbfaf6;font-size:10px;display:flex;align-items:center;justify-content:center">Ék</div>
+  <div style="position:absolute;left:310px;top:176px;width:34px;height:34px;border-radius:50%;border:1.5px solid #2b2b2b;background:#fbfaf6;font-size:10px;display:flex;align-items:center;justify-content:center">Vonal</div>
+  <div style="position:absolute;left:472px;top:196px;font:500 17px 'Caveat',cursive;color:oklch(0.5 0.13 40)">← jobb klikk nyomva: körmenü</div>
+  <div style="position:absolute;left:12px;bottom:12px;width:120px;height:120px;border-radius:50%;border:2px solid #2b2b2b;background:linear-gradient(160deg,#fbfaf6 52%,oklch(0.75 0.1 240) 52% 60%,#fbfaf6 60%);display:flex;align-items:flex-end;justify-content:center;font-size:12px;padding-bottom:10px;box-sizing:border-box">térkép</div>
+  <div style="position:absolute;left:230px;bottom:12px;display:flex;align-items:center;gap:8px;padding:4px 12px;background:#fbfaf6;border:1.5px solid #2b2b2b;border-radius:14px"><span style="font-size:16px">Huszár ×4</span><div style="width:80px;height:7px;border:1.5px solid #2b2b2b"><div style="width:78%;height:100%;background:oklch(0.6 0.13 145)"></div></div><span style="font-size:12px">zsold 4/ősz</span></div>
+  <div style="position:absolute;right:12px;bottom:12px;display:flex;flex-direction:column;gap:5px;font-size:12px;width:120px">
+    <div style="padding:2px 8px;background:#fbfaf6;border:1.5px dashed #2b2b2b;opacity:.6">Őrtorony — vár</div>
+    <div style="padding:2px 8px;background:#fbfaf6;border:1.5px solid #2b2b2b">Hajdú ×3 — 40%</div>
+    <div style="padding:2px 8px;background:linear-gradient(90deg,oklch(0.9 0.06 145) 65%,#fbfaf6 65%);border:1.5px solid #2b2b2b">Palánk — 65%</div>
+    <div style="text-align:right;font:500 16px 'Caveat',cursive;color:oklch(0.5 0.13 40)">gyártási sor ↑</div>
+  </div>
+</div></div></div>
+
+<div class="dv-opt" id="1d"><div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>Krónika-margó — a HUD egy kódexlap széle, az évszak függőleges idővonal</div>
+<div class="dv-card" style="width:720px"><div style="height:540px;display:flex;background:#fbfaf6;font-size:14px">
+  <div style="width:168px;border-right:2px solid #2b2b2b;padding:10px;display:flex;flex-direction:column;gap:8px;box-sizing:border-box">
+    <div style="display:flex;gap:6px;align-items:flex-start"><div style="width:34px;height:34px;border:2px solid oklch(0.6 0.13 40);color:oklch(0.5 0.13 40);font:700 28px/30px 'Caveat',cursive;text-align:center">A</div><div style="font-size:13px;line-height:1.2">nno 1566, nyár derekán a vár népe 34 lélek.</div></div>
+    <div style="border-left:2px solid #2b2b2b;margin-left:8px;padding-left:12px;display:flex;flex-direction:column;gap:7px;font-size:13px;position:relative">
+      <div style="opacity:.5">Tavasz · áradás elmúlt</div>
+      <div><span style="background:#2b2b2b;color:#fbfaf6;padding:0 5px">Nyár</span> hadjárat, 2:10</div>
+      <div style="color:oklch(0.5 0.13 40)">Ősz · zsold: 85 / 112 !</div>
+      <div style="color:oklch(0.45 0.13 240)">Tél · a folyó befagy</div>
+      <div style="position:absolute;left:-7px;top:26px;width:10px;height:10px;border-radius:50%;background:#2b2b2b"></div>
+    </div>
+    <div style="font:500 16px 'Caveat',cursive;color:oklch(0.5 0.13 40);line-height:1.1">↑ előre látszik, mi jön: a hiányzó zsold már nyáron piros</div>
+    <div style="border-top:1.5px solid #2b2b2b;padding-top:6px;font-size:13px;line-height:1.35"><div>Élelem 420</div><div>Fa 310</div><div>Kő 120</div></div>
+    <div style="border-top:1.5px solid #2b2b2b;padding-top:6px;font-size:12px;line-height:1.3;flex:1"><div style="font-size:14px">Krónika</div><div>· Portyát láttak keletről</div><div>· A malom elkészült</div><div style="opacity:.5">· Két hajdú megszökött</div></div>
+  </div>
+  <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+    <div style="position:relative;flex:1;overflow:hidden;background:repeating-linear-gradient(26.57deg,transparent 0 27px,rgba(43,43,43,.09) 27px 28px),repeating-linear-gradient(-26.57deg,transparent 0 27px,rgba(43,43,43,.09) 27px 28px),#f6f3ea">
+      <div style="position:absolute;left:-60px;top:190px;width:760px;height:50px;background:oklch(0.92 0.04 240);border:2px solid oklch(0.6 0.13 240);border-radius:50%;transform:rotate(-17deg)"></div>
+      <div style="position:absolute;left:70px;top:270px;width:90px;height:90px;border:2.5px solid #2b2b2b;background:#fff;transform:scaleY(.5) rotate(45deg)"></div>
+      <div style="position:absolute;left:92px;top:306px;font-size:14px">végvár</div>
+      <div style="position:absolute;left:250px;top:300px;width:16px;height:9px;border:2px solid oklch(0.55 0.13 145);border-radius:50%"></div>
+      <div style="position:absolute;left:278px;top:314px;width:16px;height:9px;border:2px solid oklch(0.55 0.13 145);border-radius:50%"></div>
+      <div style="position:absolute;left:300px;top:296px;width:16px;height:9px;border:2px solid oklch(0.55 0.13 145);border-radius:50%"></div>
+      <div style="position:absolute;left:400px;top:90px;width:10px;height:10px;border-radius:50%;background:oklch(0.6 0.13 40)"></div>
+      <div style="position:absolute;left:418px;top:104px;width:10px;height:10px;border-radius:50%;background:oklch(0.6 0.13 40)"></div>
+      <div style="position:absolute;right:8px;top:8px;width:110px;height:84px;border:2px solid #2b2b2b;background:linear-gradient(160deg,#fbfaf6 52%,oklch(0.75 0.1 240) 52% 60%,#fbfaf6 60%);display:flex;align-items:flex-end;justify-content:center;font-size:12px">térkép</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;padding:6px 8px;border-top:2px solid #2b2b2b;font-size:12px">
+      <span style="font-size:16px;margin-right:6px">Huszár ×3</span>
+      <span style="padding:3px 8px;border:1.5px solid #2b2b2b;border-radius:4px 7px 5px 6px">Megy</span><span style="padding:3px 8px;border:1.5px solid #2b2b2b;border-radius:4px 7px 5px 6px">Támad</span><span style="padding:3px 8px;border:1.5px solid #2b2b2b;border-radius:4px 7px 5px 6px">Őrjár</span><span style="padding:3px 8px;border:1.5px solid #2b2b2b;border-radius:4px 7px 5px 6px">Ék</span><span style="padding:3px 8px;border:1.5px solid oklch(0.6 0.13 40);color:oklch(0.5 0.13 40);border-radius:4px 7px 5px 6px">Portya</span>
+      <span style="margin-left:auto;padding:3px 8px;border:1.5px solid #2b2b2b">Menü</span>
+    </div>
+  </div>
+</div></div></div>
+
+<div class="dv-opt" id="1e"><div class="dv-olabel"><a class="dv-oid" href="#1e">1e</a>Motívumlap — grafikai alapelemek</div>
+<div class="dv-card" style="width:720px"><div style="padding:20px 22px;background:#fbfaf6;display:grid;grid-template-columns:1fr 1fr;gap:20px 28px;font-size:14px">
+  <div>
+    <div style="font:700 22px 'Caveat',cursive">Paletta</div>
+    <div style="display:flex;gap:8px;margin-top:6px;font-size:11px;text-align:center">
+      <div><div style="width:54px;height:36px;background:#fbfaf6;border:1.5px solid #2b2b2b"></div>pergamen</div>
+      <div><div style="width:54px;height:36px;background:#2b2b2b"></div>gubacstinta</div>
+      <div><div style="width:54px;height:36px;background:oklch(0.6 0.13 40)"></div>rézvörös</div>
+      <div><div style="width:54px;height:36px;background:oklch(0.6 0.13 240)"></div>folyókék</div>
+      <div><div style="width:54px;height:36px;background:oklch(0.6 0.13 145)"></div>ártérzöld</div>
+    </div>
+  </div>
+  <div>
+    <div style="font:700 22px 'Caveat',cursive">Címerformák (csapatszín)</div>
+    <div style="display:flex;gap:16px;margin-top:6px;font-size:11px;text-align:center;align-items:flex-end">
+      <div><div style="width:40px;height:46px;border:2px solid #2b2b2b;border-radius:0 0 20px 20px;background:linear-gradient(90deg,oklch(0.6 0.13 40) 50%,#fbfaf6 50%)"></div>Végvári</div>
+      <div><div style="width:44px;height:44px;border:2px solid #2b2b2b;border-radius:50%;position:relative;background:oklch(0.6 0.13 145)"><div style="position:absolute;left:14px;top:5px;width:30px;height:30px;border-radius:50%;background:#fbfaf6"></div></div>Oszmán</div>
+      <div><div style="width:40px;height:40px;border:2px solid #2b2b2b;transform:rotate(45deg);margin:4px;background:oklch(0.85 0.1 90)"></div>Császári</div>
+    </div>
+  </div>
+  <div>
+    <div style="font:700 22px 'Caveat',cursive">Szegélyminták (panelkeret)</div>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-top:6px;font-size:12px">
+      <div style="height:14px;border:1.5px solid #2b2b2b;background:repeating-linear-gradient(90deg,#2b2b2b 0 2px,transparent 2px 12px)"></div><div>palánk — karósor, a Végvári HUD kerete</div>
+      <div style="height:14px;border:1.5px solid #2b2b2b;background:repeating-linear-gradient(60deg,oklch(0.6 0.13 40) 0 3px,transparent 3px 9px)"></div><div>sujtás — huszárzsinór, kiemelt gombokhoz</div>
+      <div style="height:14px;border:1.5px solid #2b2b2b;background:radial-gradient(circle,#2b2b2b 2.5px,transparent 3px) 0 0/16px 14px"></div><div>vasalás — szegecssor, építés-panel</div>
+      <div style="height:14px;border:1.5px solid #2b2b2b;background:repeating-linear-gradient(45deg,oklch(0.6 0.13 240) 0 2px,transparent 2px 8px),repeating-linear-gradient(-45deg,oklch(0.6 0.13 240) 0 2px,transparent 2px 8px)"></div><div>rácsminta — iznikes csempe, Oszmán HUD</div>
+    </div>
+  </div>
+  <div>
+    <div style="font:700 22px 'Caveat',cursive">Terepcsempék (2:1 izometria)</div>
+    <div style="display:flex;gap:26px;margin:14px 0 0 10px;font-size:11px;text-align:center">
+      <div><div style="width:46px;height:46px;border:2px solid #2b2b2b;transform:scaleY(.5) rotate(45deg);background:oklch(0.9 0.06 145)"></div>rét</div>
+      <div><div style="width:46px;height:46px;border:2px dashed oklch(0.6 0.13 240);transform:scaleY(.5) rotate(45deg);background:repeating-linear-gradient(0deg,oklch(0.85 0.06 240) 0 3px,oklch(0.9 0.06 145) 3px 8px)"></div>mocsár</div>
+      <div><div style="width:46px;height:46px;border:2px solid oklch(0.6 0.13 240);transform:scaleY(.5) rotate(45deg);background:oklch(0.9 0.05 240)"></div>folyó</div>
+      <div><div style="width:46px;height:46px;border:2px solid #2b2b2b;transform:scaleY(.5) rotate(45deg);background:#fff"></div>jég</div>
+    </div>
+    <div style="font:500 16px 'Caveat',cursive;color:oklch(0.5 0.13 40);margin-top:4px">ugyanaz a csempe évszakonként más: 4 terepkészlet</div>
+  </div>
+  <div>
+    <div style="font:700 22px 'Caveat',cursive">Gombállapotok</div>
+    <div style="display:flex;gap:8px;margin-top:6px;font-size:12px;text-align:center">
+      <div style="width:56px;padding:8px 0;border:1.5px solid #2b2b2b">alap</div>
+      <div style="width:56px;padding:8px 0;border:2.5px solid #2b2b2b;background:#fff">fölötte</div>
+      <div style="width:56px;padding:8px 0;border:1.5px solid #2b2b2b;background:#2b2b2b;color:#fbfaf6">lenyomva</div>
+      <div style="width:56px;padding:8px 0;border:1.5px dashed #2b2b2b;opacity:.5">tiltva</div>
+      <div style="width:56px;padding:8px 0;border:1.5px solid #2b2b2b;background:linear-gradient(0deg,oklch(0.9 0.06 145) 60%,transparent 60%)">gyárt</div>
+    </div>
+  </div>
+  <div>
+    <div style="font:700 22px 'Caveat',cursive">Kép- és betűvilág</div>
+    <div style="display:flex;gap:10px;margin-top:6px">
+      <div style="width:110px;height:70px;border:1.5px solid #2b2b2b;background:repeating-linear-gradient(135deg,rgba(43,43,43,.12) 0 2px,transparent 2px 8px);font:10px ui-monospace,monospace;display:flex;align-items:center;justify-content:center;text-align:center">rézkarc-vonalas<br>épület sprite</div>
+      <div style="font-size:13px;line-height:1.35">Sprite: tusvonal + lapos akvarell, rézkarcok sraffozásával.<br>Cím: metszett antikva. Krónika: dőlt kézírás. Számok: ugyanaz, táblás.</div>
+    </div>
+  </div>
+</div></div></div>
+
+<div class="dv-opt" id="1f"><div class="dv-olabel"><a class="dv-oid" href="#1f">1f</a>Főmenü</div>
+<div class="dv-card" style="width:720px"><div style="height:540px;display:flex;background:#fbfaf6;font-size:16px">
+  <div style="width:270px;padding:34px 28px;box-sizing:border-box;display:flex;flex-direction:column;border-right:2px solid #2b2b2b">
+    <div style="font:700 60px/1 'Caveat',cursive">Végvár</div>
+    <div style="height:10px;margin:8px 0 26px;background:repeating-linear-gradient(60deg,oklch(0.6 0.13 40) 0 3px,transparent 3px 9px)"></div>
+    <div style="display:flex;flex-direction:column;gap:9px;font-size:19px">
+      <div style="padding:5px 12px;border:2px solid #2b2b2b;background:#2b2b2b;color:#fbfaf6;border-radius:4px 9px 5px 8px">Hadjárat</div>
+      <div style="padding:5px 12px;border:2px solid #2b2b2b;border-radius:4px 9px 5px 8px">Csetepaté</div>
+      <div style="padding:5px 12px;border:2px solid #2b2b2b;border-radius:4px 9px 5px 8px">Hálózati játék</div>
+      <div style="padding:5px 12px;border:2px solid #2b2b2b;border-radius:4px 9px 5px 8px">Pályaszerkesztő</div>
+      <div style="padding:5px 12px;border:2px solid #2b2b2b;border-radius:4px 9px 5px 8px">Beállítások</div>
+      <div style="padding:5px 12px;border:2px dashed #2b2b2b;border-radius:4px 9px 5px 8px">Kilépés</div>
+    </div>
+    <div style="margin-top:auto;font-size:12px;opacity:.6">v0.1 · wireframe</div>
+  </div>
+  <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+    <div style="flex:1;margin:16px 16px 10px;border:2px solid #2b2b2b;background:repeating-linear-gradient(135deg,rgba(43,43,43,.1) 0 2px,transparent 2px 10px);display:flex;align-items:center;justify-content:center;font:12px ui-monospace,monospace;text-align:center">festett kulcskép:<br>palánkvár a folyókanyarban, hajnali köd</div>
+    <div style="margin:0 16px 16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;font-size:14px">
+      <div style="padding:6px 8px;border:2px solid #2b2b2b;background:#fff"><b>I. Eger, 1552</b><div style="font-size:12px">Végváriak · ostrom kiállása télig</div></div>
+      <div style="padding:6px 8px;border:1.5px dashed #2b2b2b;opacity:.6"><b>II. Szigetvár, 1566</b><div style="font-size:12px">zárolva</div></div>
+      <div style="padding:6px 8px;border:1.5px dashed #2b2b2b;opacity:.6"><b>III. Buda, 1686</b><div style="font-size:12px">zárolva</div></div>
+    </div>
+  </div>
+</div></div></div>
+
+</div>
+<p class="dv-next">Folytatás: „<a class="dv-oid" href="#1d">1d</a> margója + <a class="dv-oid" href="#1c">1c</a> körmenüje egyben” · „<a class="dv-oid" href="#1a">1a</a> részletesen: épület kijelölve, gyártás, ostrom” · „másik korszak / helyszín koncepciók”</p>
+</section>
+</x-dc>
+</body>
+</html>
