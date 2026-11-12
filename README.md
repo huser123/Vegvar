@@ -12,8 +12,11 @@ A szabályok forrása: [`Vegvar - Jatekszabaly es logika.md`](Vegvar%20-%20Jatek
 npm install
 npm run dev      # fejlesztői szerver, port: 5210 (lásd port.txt)
 npm test         # a szabálykönyv 18. fejezetének tesztjei + mechanikai tesztek
-npm run build    # statikus build a dist/ mappába (Cloudflare Pages: build = npm run build, kimenet = dist)
+npm run build    # statikus build a dist/ mappába
 ```
+
+Közzététel: a `main` ágra érkező push után a `.github/workflows/pages.yml` tesztel, buildel és kiteszi a játékot
+GitHub Pages-re (<https://huser123.github.io/Vegvar/>). Cloudflare Pages-en ugyanez: build `npm run build`, kimenet `dist`.
 
 Gyorsindítás menü nélkül: `?auto=0,1,2` (saját frakció, ellenfél, nehézség; 0 végvári, 1 oszmán, 2 császári),
 `&seed=n`, `&size=128`; az Eger-küldetés: `?auto=eger`.
